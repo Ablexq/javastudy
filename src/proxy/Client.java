@@ -20,11 +20,9 @@ public class Client {
         System.out.println(staticCalculatorProxy.add(1,2));
         System.out.println(staticCalculatorProxy.minus(1, 2));
 
-        //被代理对象
-        CustomInterface realObject = new RealObject();
-        //代理对象
-        InvocationHandler proxyObject = new ProxyObject(realObject);
-        ClassLoader classLoader = realObject.getClass().getClassLoader();
+        CustomInterface realObject = new RealObject();//被代理对象
+        InvocationHandler proxyObject = new ProxyObject(realObject);//代理对象
+        ClassLoader classLoader = realObject.getClass().getClassLoader();//类加载器
         Class<?>[] interfaces = realObject.getClass().getInterfaces();//被代理对象的实际接口
         CustomInterface proxyInstance = (CustomInterface) Proxy.newProxyInstance(classLoader, interfaces, proxyObject);
 
